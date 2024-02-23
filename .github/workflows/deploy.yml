@@ -16,7 +16,7 @@ jobs:
       - name: install Node
         uses: actions/setup-node@master
         with:
-        node-version: 20
+          node-version: 20
 
       - name: Install SSH client
         run: sudo yum install -y openssh-clients
