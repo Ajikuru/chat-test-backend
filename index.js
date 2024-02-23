@@ -33,7 +33,7 @@ app.use(express.static(`${__dirname}/public`));
 
 
 io.on('connection', (socket) => {
-    // console.log('A user connected');
+    console.log('A user connect...');
 
     socket.on('chat', (msg) => {
         io.emit('chat', msg);
