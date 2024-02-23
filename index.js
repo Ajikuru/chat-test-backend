@@ -30,10 +30,10 @@ const __dirname = dirname(__filename);
 
 app.use(express.static(`${__dirname}/public`));
 
-
+const PORT = process.env.PORT || 3001;
 
 io.on('connection', (socket) => {
-    console.log('A user connect...');
+    console.log(`A user connect... ${PORT}`);
 
     socket.on('chat', (msg) => {
         io.emit('chat', msg);
@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = process.env.PORT || 3001;
+
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
