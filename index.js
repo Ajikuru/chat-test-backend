@@ -30,7 +30,7 @@ const __dirname = dirname(__filename);
 
 app.use(express.static(`${__dirname}/public`));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 80;
 
 app.get("/",(req,res)=>{
     res.write("<h1>Hello World</h1>");
