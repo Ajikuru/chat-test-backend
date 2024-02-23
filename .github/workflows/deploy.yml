@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -13,9 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Checkout code
+        uses: actions/setup-node@master
+        with:
+        node-version: 20
+
       - name: Install SSH client
         run: sudo yum install -y openssh-clients
 
       - name: Deploy
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@your-ec2-ip 'cd /root/chat-test-backend && git pull && npm install && npm run build && pm2 restart app'
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} root@13.60.20.23 'cd /root/chat-test-backend && git pull && npm install && npm run start && pm2 restart app'
