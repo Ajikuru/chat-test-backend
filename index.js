@@ -32,6 +32,10 @@ app.use(express.static(`${__dirname}/public`));
 
 const PORT = process.env.PORT || 3001;
 
+app.get("/",(req,res)=>{
+    res.write("<h1>Hello World</h1>");
+})
+
 io.on('connection', (socket) => {
     console.log(`A user connect... ${PORT}`);
 
